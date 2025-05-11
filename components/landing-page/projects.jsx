@@ -14,7 +14,7 @@ export function ManageProjectsSection() {
 
   // if (!hasMounted) return null;
   return (
-    <div className="relative z-20 py-10  max-w-7xl mx-auto">
+    <div id="projects" className="relative z-20 py-10  max-w-7xl mx-auto">
       <div className="px-8 pb-10">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
           Marketing Your Projects in Simple Steps

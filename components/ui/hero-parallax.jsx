@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import Link from "next/link";
 
 export const HeroParallax = ({ products }) => {
   const firstRow = products.slice(0, 5);
@@ -131,10 +132,18 @@ export const Header = () => {
         }}
         className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-4"
       >
-        <button className="w-60 transform rounded-lg bg-black px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-          Start Free Now
-        </button>
-        <button className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
+        <Link
+          href={"#website"}
+          className="cursor-pointer w-60 
+          transform rounded-lg bg-black 
+          px-6 py-2 font-medium text-white 
+          flex items-center justify-center
+          transition-all duration-300 hover:-translate-y-0.5
+           hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+        >
+          Explore More
+        </Link>
+        <button className="cursor-pointer w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900">
           Contact Support
         </button>
       </motion.div>

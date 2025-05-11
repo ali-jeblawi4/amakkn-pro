@@ -47,7 +47,10 @@ export function BuildYourWebsiteSection() {
 
   if (!hasMounted) return null;
   return (
-    <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
+    <div
+      className="relative z-20 py-10 lg:py-20 max-w-7xl mx-auto"
+      id="website"
+    >
       <div className="px-8">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
           Professional Website. Zero Coding Needed
@@ -58,7 +61,7 @@ export function BuildYourWebsiteSection() {
           easy-to-use steps
         </p>
       </div>
-      <div className="relative ">
+      <div className="relative">
         <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
           {features.map((feature, index) => (
             <FeatureCard key={index} className={feature.className}>
@@ -108,7 +111,6 @@ export const SkeletonOne = () => {
     <div className="relative flex py-8 px-2 gap-10 h-full">
       <div className="shadow-2xl group  h-[450px] w-[700px]">
         <div className="flex flex-1 h-[450px] w-[700px] flex-col">
-          {/* TODO */}
           <img
             src="https://images.unsplash.com/photo-1517322048670-4fba75cbbb62?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="header"
@@ -248,8 +250,8 @@ export const Globe = ({ className }) => {
       markerColor: [0.1, 0.8, 1],
       glowColor: [1, 1, 1],
       markers: [
-        { location: [37.7595, -122.4367], size: 0.03 },
-        { location: [40.7128, -74.006], size: 0.1 },
+        { location: [24.716199523004914, 46.671776478222675], size: 0.1 },
+        { location: [21.4505289, 38.9309635], size: 0.02 },
       ],
       onRender: (state) => {
         state.phi = phi;
