@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import { Grid } from "./grid";
 
 export const WobbleCard = ({ children, containerClassName, className }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -34,12 +35,14 @@ export const WobbleCard = ({ children, containerClassName, className }) => {
       )}
     >
       <div
-        className="relative  h-full [background-image:radial-gradient(88%_100%_at_top,rgba(255,255,255,0.5),rgba(255,255,255,0))]  sm:mx-0 sm:rounded-2xl overflow-hidden"
+        className="relative  h-full [background-image:radial-gradient(80%_100%_at_top,rgba(200,200,200,0.7),rgba(255,255,255,0))]  sm:mx-0 sm:rounded-2xl overflow-hidden"
         style={{
           boxShadow:
             "0 10px 32px rgba(34, 42, 53, 0.12), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.05), 0 4px 6px rgba(34, 42, 53, 0.08), 0 24px 108px rgba(47, 48, 55, 0.10)",
         }}
       >
+        <Grid size={20} />
+
         <motion.div
           style={{
             transform: isHovering

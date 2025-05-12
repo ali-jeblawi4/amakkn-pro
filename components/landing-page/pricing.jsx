@@ -21,19 +21,47 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { CheckIcon, MinusIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { Grid } from "../ui/grid";
+import { SAR } from "../shared/sar";
 
 const planFeatures = [
   {
     type: "Basic Features",
     features: [
       {
-        name: "Open/High/Low/Close",
+        name: "Technical support priority",
+        pro: false,
+        proPlus: true,
+      },
+      {
+        name: "Ability to add the company logo to the AD's images",
+        pro: false,
+        proPlus: true,
+      },
+      {
+        name: "Ability to add the unified contact number 9200 or 800",
         pro: true,
         proPlus: true,
       },
       {
-        name: "Price-volume difference indicator	",
+        name: "Ability to add the location to the map on the company page",
+        pro: true,
+        proPlus: true,
+      },
+      {
+        name: "Ability to add videos to the real estate AD",
+        pro: true,
+        proPlus: true,
+      },
+      {
+        name: "Printable and shareable image of real estate listing details",
+        pro: true,
+        proPlus: true,
+      },
+      {
+        name: "Ability to feature only one real estate AD",
         pro: true,
         proPlus: true,
       },
@@ -43,44 +71,72 @@ const planFeatures = [
     type: "SaaS Service",
     features: [
       {
-        name: "Network growth",
+        name: "Website (example.amakkn.com)",
         pro: true,
-        proPlus: false,
+        proPlus: true,
       },
       {
-        name: "Average token age consumed",
+        name: "Website with independent domain (example.com)",
         pro: true,
-        proPlus: false,
+        proPlus: true,
       },
       {
-        name: "Exchange flow",
-        pro: false,
-        proPlus: false,
+        name: "Real estate ADs map",
+        pro: true,
+        proPlus: true,
       },
       {
-        name: "Total ERC20 exchange funds flow",
+        name: "Projects and interests",
         pro: false,
-        proPlus: false,
+        proPlus: true,
+      },
+      {
+        name: "Blog",
+        pro: false,
+        proPlus: true,
+      },
+      {
+        name: "Show 𝕏 account on landing page",
+        pro: false,
+        proPlus: true,
+      },
+      {
+        name: "Link with WhatsApp (experimental)",
+        pro: false,
+        proPlus: true,
+      },
+      {
+        name: "Link with Google Tag Manager",
+        pro: false,
+        proPlus: true,
+      },
+      {
+        name: "Link with Google Analytics",
+        pro: false,
+        proPlus: true,
       },
     ],
   },
 ];
 
-export default function PricingSection() {
+export default function PricingSection({ withoutHeader }) {
   const [annual, setAnnual] = useState(false);
+  const router = useRouter();
 
   return (
     <>
-      <div id="blog" className="relative z-20 py-10  max-w-7xl mx-auto">
-        <div className="px-8 pb-10">
-          <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-            Pricing
-          </h4>
+      <div id="pricing" className="relative z-20 py-10  max-w-7xl mx-auto">
+        {!withoutHeader && (
+          <div className="px-8 pb-10">
+            <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
+              Pricing
+            </h4>
 
-          <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-            Options that suit your business
-          </p>
-        </div>
+            <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+              Options that suit your business
+            </p>
+          </div>
+        )}
         <div className="container mx-auto px-4 md:px-6 2xl:max-w-[1400px] py-5">
           <div className="flex justify-center items-center">
             <Label htmlFor="payment-schedule" className="me-3">
@@ -109,63 +165,134 @@ export default function PricingSection() {
                       className="text-muted-foreground"
                     />
                   </svg>
-                  <Badge className="mt-3 uppercase bg-black text-white">
-                    Save up to 10%
-                  </Badge>
+                  <Badge className="mt-3 uppercase">Save up to 10%</Badge>
                 </span>
               </span>
             </Label>
           </div>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 justify-center gap-6 lg:items-center">
             <div></div>
-            <Card className="flex flex-col">
+            <Card className="flex flex-col relative overflow-hidden">
+              <Grid size={20} />
               <CardHeader className="text-center pb-2">
                 <CardTitle className="mb-7">Pro Business</CardTitle>
-                <span className="font-bold text-5xl">
-                  {annual ? "599 SAR" : "3,999 SAR"}
+                <span className="font-bold text-5xl aligned-text justify-center">
+                  <SAR width={34} top={"6px"} />
+                  <span>{!annual ? "599" : "3,999"}</span>
                 </span>
               </CardHeader>
               <CardDescription className="text-center">
                 Suitable for medium real estate companies
               </CardDescription>
-              <CardContent className="flex-1"></CardContent>
+              <CardContent className="flex-1">
+                <ul className="mt-7 space-y-2.5 text-sm">
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">
+                      Ability to add 300 ADs
+                    </span>
+                  </li>
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">
+                      Ability to add an agent
+                    </span>
+                  </li>
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">
+                      Customer management system (2,000 customers)
+                    </span>
+                  </li>
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">3 templates</span>
+                  </li>
+                </ul>
+              </CardContent>
               <CardFooter>
-                <Button className="w-full cursor-pointer transform rounded-lg bg-white border-1 border-black px-2 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 hover:text-white dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                <Button
+                  onClick={() =>
+                    router.push(
+                      withoutHeader ? "/place-order" : "/plans-and-prices"
+                    )
+                  }
+                  className="w-full cursor-pointer transform rounded-lg bg-white border-1 border-black px-2 py-2 font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 hover:text-white dark:bg-white dark:text-black dark:hover:bg-gray-200"
+                >
                   Start free now
                 </Button>
               </CardFooter>
             </Card>
-            <Card className="border-primary flex flex-col">
+            <Card className="border-primary flex flex-col relative overflow-hidden">
+              <Grid size={20} />
+
               <CardHeader className="text-center pb-2">
-                <Badge className="uppercase w-max self-center mb-3  bg-black text-white">
+                <Badge className="uppercase w-max self-center mb-3">
                   Most popular
                 </Badge>
                 <CardTitle className="!mb-7">Pro Business +</CardTitle>
-                <span className="font-bold text-5xl">
-                  {annual ? "899 SAR" : "6,999 SAR"}
+
+                <span className="font-bold text-5xl aligned-text justify-center">
+                  <SAR width={34} top={"6px"} />
+                  <span>{!annual ? "899" : "6,999"}</span>
                 </span>
               </CardHeader>
               <CardDescription className="text-center w-11/12 mx-auto">
                 Suitable for large real estate companies
               </CardDescription>
-              <CardContent className="flex-1"></CardContent>
+              <CardContent className="flex-1">
+                <ul className="mt-7 space-y-2.5 text-sm">
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">
+                      Ability to add 500 ADs
+                    </span>
+                  </li>
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">
+                      Ability to add 3 agents
+                    </span>
+                  </li>
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">
+                      Customer management system (2,000 customers)
+                    </span>
+                  </li>
+                  <li className="flex space-x-2">
+                    <CheckIcon className="flex-shrink-0 mt-0.5 h-4 w-4" />
+                    <span className="text-muted-foreground">10 templates</span>
+                  </li>
+                </ul>
+              </CardContent>
               <CardFooter>
-                <Button className="w-full cursor-pointer transform rounded-lg bg-black px-2 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                <Button
+                  onClick={() =>
+                    router.push(
+                      withoutHeader ? "/place-order" : "/plans-and-prices"
+                    )
+                  }
+                  className="w-full cursor-pointer transform rounded-lg  px-2 py-2 font-medium transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-800 dark:bg-white dark:text-black dark:hover:bg-gray-200"
+                >
                   Start free now
                 </Button>
               </CardFooter>
             </Card>
             <div></div>
           </div>
-          {/* <div className="mt-20 lg:mt-32">
+          <div className="mt-20 lg:mt-32">
             <div className="lg:text-center mb-10 lg:mb-20">
-              <h3 className="text-2xl font-semibold dark:text-white">
+              <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
                 Compare plans
-              </h3>
+              </h4>
+              <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
+                Detailed features of the plans
+              </p>
             </div>
             <Table className="hidden lg:table">
               <TableHeader>
-                <TableRow className="bg-gray-200 hover:bg-gray-200">
+                <TableRow className="bg-gray-100 hover:bg-gray-200">
                   <TableHead className="w-3/12 text-primary">Plans</TableHead>
                   <TableHead className="w-2/12 text-primary text-lg font-medium text-center">
                     Pro Business
@@ -217,7 +344,7 @@ export default function PricingSection() {
             <div className="space-y-24 lg:hidden">
               <section>
                 <div className="mb-4">
-                  <h4 className="text-xl font-medium">Free</h4>
+                  <h4 className="text-xl font-medium">Pro Business</h4>
                 </div>
                 <Table>
                   {planFeatures.map((featureType) => (
@@ -253,7 +380,7 @@ export default function PricingSection() {
               </section>
               <section>
                 <div className="mb-4">
-                  <h4 className="text-xl font-medium">Startup</h4>
+                  <h4 className="text-xl font-medium">Pro Business +</h4>
                 </div>
                 <Table>
                   {planFeatures.map((featureType) => (
@@ -288,7 +415,7 @@ export default function PricingSection() {
                 </Table>
               </section>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
     </>
